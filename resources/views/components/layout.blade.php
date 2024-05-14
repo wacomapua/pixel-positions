@@ -14,7 +14,7 @@
 
     <title>Pixel Positions</title>
 </head>
-<body class="bg-black text-white font-hanken-grotesk">
+<body class="bg-black text-white font-hanken-grotesk pb-20">
 <div class="px-10">
 
     <nav class="flex justify-between items-center py-4 border-b border-white/10">
@@ -30,10 +30,23 @@
             <a href="">Salaries</a>
             <a href="">Companies</a>
         </div>
+        @auth
+            <div class="flex space-x-4">
+                <a href="/jobs/create">Post a Job</a>
 
-        <div>
-            <a href="">Post a Job</a>
-        </div>
+                <form action="/logout" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button>Logout</button>
+                </form>
+            </div>
+        @endauth
+        @guest
+            <div>
+                <a href="/register">Sign Up</a>
+                <a href="/login">Login</a>
+            </div>
+        @endguest
 
     </nav>
 
